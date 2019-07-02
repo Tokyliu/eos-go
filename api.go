@@ -483,6 +483,11 @@ func (api *API) GetDBSize() (out *DBSizeResp, err error) {
 	return
 }
 
+func (api *API) GetTransaction2(id string, blockNumber uint32) (out *TransactionResp, err error) {
+	err = api.call("history", "get_transaction", M{"id": id, "block_num_hint":blockNumber}, &out)
+	return
+}
+
 func (api *API) GetTransaction(id string) (out *TransactionResp, err error) {
 	err = api.call("history", "get_transaction", M{"id": id}, &out)
 	return
